@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  php82-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php82-dev
+    ports:
+      - "8030:80"
+    volumes:
+      - php82_dev_www:/var/www/html
+    restart: unless-stopped
+
+  php82-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php82-prod
+    ports:
+      - "8031:80"
+    volumes:
+      - php82_prod_www:/var/www/html
+    restart: unless-stopped
+
+volumes:
+  php82_dev_www:
+  php82_prod_www:
